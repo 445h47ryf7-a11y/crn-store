@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRN STORE</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #080808;
+  color: #fff;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 30px 15px;
+  background: linear-gradient(135deg,#111,#1c1c1c);
+  border-bottom: 2px solid #e00000;
+}
+
+.logo {
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.logo span {
+  color: #e00000;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-top: 8px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 25px;
+}
+
+.category {
+  background: #171717;
+  color: white;
+  border: 1px solid #333;
+  padding: 13px 18px;
+  border-radius: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.category.active {
+  background: #e00000;
+  border-color: #e00000;
+}
+
+h2 {
+  margin-bottom: 18px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 15px;
+}
+
+.card {
+  background: #121212;
+  border: 1px solid #292929;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
+
+.price {
+  color: #ff3333;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.buy {
+  width: 100%;
+  border: none;
+  background: #e00000;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.buy:hover {
+  background: #b80000;
+}
+
+.order-box {
+  display: none;
+  background: #151515;
+  border: 1px solid #333;
+  padding: 20px;
+  margin-top: 25px;
+  border-radius: 15px;
+}
+
+.order-box.show {
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  background: #0c0c0c;
+  color: white;
+  border: 1px solid #444;
+  padding: 13px;
+  border-radius: 10px;
+  margin: 7px 0 12px;
+}
+
+.confirm {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #25d366;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  padding: 30px 10px;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">CRN <span>STORE</span></div>
+  <div class="subtitle">متجر شدات وألعاب وسماعات</div>
+</header>
+
+<div class="container">
+
+  <div class="categories">
+
+    <button class="category active"
+      onclick="showCategory('classic',this)">
+      🎮 كونكر كلاسيك
+    </button>
+
+    <button class="category"
+      onclick="showCategory('ultimate',this)">
+      👑 كونكر التمت
+    </button>
+
+    <button class="category"
+      onclick="showCategory('headphones',this)">
+      🎧 سماعات
+    </button>
+
+  </div>
+
+  <!-- كونكر كلاسيك -->
+
+  <section id="classic">
+
+    <h2>🎮 كونكر كلاسيك</h2>
+
+    <div class="products">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>60 UC</h3>
+          <div class="price">$1</div>
+
+          <button class="buy"
+            onclick="order('60 UC','$1')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>325 UC</h3>
+          <div class="price">$5</div>
+
+          <button class="buy"
+            onclick="order('325 UC','$5')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>660 UC</h3>
+          <div class="price">$10</div>
+
+          <button class="buy"
+            onclick="order('660 UC','$10')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- كونكر التمت -->
+
+  <section id="ultimate" style="display:none">
+
+    <h2>👑 كونكر التمت</h2>
+
+    <div class="products">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>Ultimate Royale</h3>
+          <div class="price">$5</div>
+
+          <button class="buy"
+            onclick="order('Ultimate Royale','$5')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>Royal Pass</h3>
+          <div class="price">$10</div>
+
+          <button class="buy"
+            onclick="order('Royal Pass','$10')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- السماعات -->
+
+  <section id="headphones" style="display:none">
+
+    <h2>🎧 السماعات</h2>
+
+    <div class="products">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>Gaming Headset X1</h3>
+          <div class="price">$20</div>
+
+          <button class="buy"
+            onclick="order('Gaming Headset X1','$20')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80">
+
+        <div class="card-content">
+          <h3>Gaming Headset Pro</h3>
+          <div class="price">$30</div>
+
+          <button class="buy"
+            onclick="order('Gaming Headset Pro','$30')">
+            طلب الآن
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- نموذج الطلب -->
+
+  <div id="orderBox" class="order-box">
+
+    <h2>📦 طلب المنتج</h2>
+
+    <p id="selectedProduct"
+       style="color:#aaa;margin:10px 0 15px">
+    </p>
+
+    <label>اسمك</label>
+    <input id="name"
+      type="text"
+      placeholder="اكتب اسمك">
+
+    <label>معرّف اللاعب / ID</label>
+    <input id="playerId"
+      type="text"
+      placeholder="اكتب ID اللاعب">
+
+    <label>طريقة الدفع</label>
+
+    <select id="payment">
+      <option>اختر طريقة الدفع</option>
+      <option>USDT</option>
+      <option>تحويل بنكي</option>
+      <option>أخرى</option>
+    </select>
+
+    <button class="confirm"
+      onclick="sendOrder()">
+      إرسال الطلب عبر واتساب
+    </button>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 CRN STORE — جميع الحقوق محفوظة
+</footer>
+
+
+<script>
+
+let selectedProduct = "";
+let selectedPrice = "";
+
+function showCategory(category, button) {
+
+  document.getElementById("classic").style.display = "none";
+  document.getElementById("ultimate").style.display = "none";
+  document.getElementById("headphones").style.display = "none";
+
+  document.getElementById(category).style.display = "block";
+
+  document.querySelectorAll(".category").forEach(function(btn) {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  document.getElementById("orderBox")
+    .classList.remove("show");
+}
+
+
+function order(product, price) {
+
+  selectedProduct = product;
+  selectedPrice = price;
+
+  document.getElementById("selectedProduct").innerHTML =
+    "المنتج: <b>" + product + "</b><br>" +
+    "السعر: <b>" + price + "</b>";
+
+  document.getElementById("orderBox")
+    .classList.add("show");
+
+  document.getElementById("orderBox")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+
+function sendOrder() {
+
+  let name =
+    document.getElementById("name").value;
+
+  let playerId =
+    document.getElementById("playerId").value;
+
+  let payment =
+    document.getElementById("payment").value;
+
+  if (!name || !playerId ||
+      payment === "اختر طريقة الدفع") {
+
+    alert("يرجى تعبئة جميع البيانات");
+    return;
+  }
+
+  /*
+  ضع رقم واتساب الخاص بك هنا.
+  اكتب الرقم بدون علامة +
+  */
+
+  let whatsappNumber = "22200000000";
+
+  let message =
+    "طلب جديد من CRN STORE\n\n" +
+    "الاسم: " + name + "\n" +
+    "المنتج: " + selectedProduct + "\n" +
+    "السعر: " + selectedPrice + "\n" +
+    "ID اللاعب: " + playerId + "\n" +
+    "طريقة الدفع: " + payment;
+
+  let url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url,"_blank");
+}
+
+</script>
+
+</body>
+</html>
